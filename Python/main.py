@@ -9,7 +9,9 @@ def to_roman(number):
     }
     if number <= 3:
         return number_to_roman[1] * number
-    
+    if number > 10:
+        return number_to_roman[10] * int(number / 10)
+
     return number_to_roman[number]
 
 
@@ -31,6 +33,14 @@ def test_numeral_two_produces_II():
 
 def test_numeral_three_produces_III():
     assert to_roman(3) == "III"
+
+
+def test_numeral_twenty_produces_XX():
+    assert to_roman(20) == "XX"
+
+
+def test_numeral_thirty_produces_XXX():
+    assert to_roman(30) == "XXX"
 
 
 if __name__ == "__main__":
